@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENX HUB - Resgatar Key</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#5b21b6,#7c3aed);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:#111827;
+    width:90%;
+    max-width:500px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(0,0,0,.4);
+}
+
+.logo{
+    font-size:32px;
+    color:white;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.sub{
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#8b5cf6;
+}
+
+.status{
+    margin-top:20px;
+    color:white;
+    font-size:18px;
+}
+
+.key-box{
+    display:none;
+    margin-top:20px;
+}
+
+.key{
+    background:#1f2937;
+    color:#22c55e;
+    padding:15px;
+    border-radius:10px;
+    word-break:break-all;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.copy{
+    background:#22c55e;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">ENX HUB</div>
+    <div class="sub">Sistema Oficial de Resgate</div>
+
+    <button class="btn" onclick="gerarKey()">
+        Resgatar sua Key
+    </button>
+
+    <div class="status" id="status"></div>
+
+    <div class="key-box" id="keyBox">
+        <div class="key" id="keyText"></div>
+        <button class="copy" onclick="copiarKey()">
+            Copiar Key
+        </button>
+    </div>
+</div>
+
+<script>
+
+const keys = [
+"ENX 12058R7-7684315",
+"ENX 54482S1-3907162",
+"ENX 76815T3-8250417",
+"ENX 19247U8-6148592",
+"ENX 41672V9-9381426",
+"ENX 74091W2-1625734",
+"ENX 96528X4-487315",
+"ENX 10485A3-7264918",
+"ENX 31857B9-8451627",
+"ENX 64298C5-1735842",
+"ENX 85731D6-9204817",
+"ENX 27184E5-6349721",
+"ENX 49512F8-3186405",
+"ENX 72956G4-8521379",
+"ENX 16398H2-5472816",
+"ENX 58624I9-7048153",
+"ENX 81057J6-2491864",
+"ENX 23476K1-9154027",
+"ENX 45791L2-6812549",
+"ENX 78124M5-3029178",
+"ENX 91563N4-7241053",
+"ENX 34872O5-5968341",
+"ENX 67249P1-8137426",
+"ENX 89631Q7-4519083",
+"ENX 28961Y3-7509281",
+"ENX 51384Z6-2741695",
+"ENX 83712A2-6984512",
+"ENX 15149B8-8267041",
+"ENX 47582C1-3401958",
+"ENX 70015D4-5827361",
+"ENX 92438E7-1638504",
+"ENX 24861F9-4973218",
+"ENX 57394G2-7204165",
+"ENX 89726H5-8413097",
+"ENX 12159I8-6758231",
+"ENX 44682J3-9082146",
+"ENX 77015K6-1325479",
+"ENX 99448L1-3568702",
+"ENX 31871M4-5812937",
+"ENX 64304N7-7056270",
+"ENX 86738O0-9299503",
+"ENX 29171P3-1542836",
+"ENX 51604Q6-3785169",
+"ENX 84038R9-6028502",
+"ENX 16461S2-8271835",
+"ENX 48894T5-0515168"
+];
+
+function gerarKey(){
+
+    document.getElementById("keyBox").style.display="none";
+    document.getElementById("status").innerHTML="🔄 Criando Key...";
+
+    setTimeout(() => {
+
+        const key = keys[Math.floor(Math.random() * keys.length)];
+
+        document.getElementById("status").innerHTML="✅ Key criada com sucesso!";
+        document.getElementById("keyText").innerText=key;
+        document.getElementById("keyBox").style.display="block";
+
+    },3000);
+}
+
+function copiarKey(){
+
+    const key = document.getElementById("keyText").innerText;
+
+    navigator.clipboard.writeText(key);
+
+    alert("Key copiada!");
+}
+
+</script>
+
+</body>
+</html>
